@@ -96,19 +96,23 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                   >
                     <User className="h-5 w-5" />
                     <div className="hidden lg:block text-left">
-                      <div className="text-xs">Hello, {user.name || 'User'}</div>
+                      <div className="text-xs">
+                        Hello, {user.name || "User"}
+                      </div>
                       <div className="text-sm font-semibold flex items-center gap-1">
                         Account
                         {isAdmin && <Shield className="h-3 w-3" />}
                       </div>
                     </div>
                   </button>
-                  
+
                   {showUserMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 border border-gray-200 dark:border-gray-700">
                       <div className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
                         <div className="font-semibold">{user.name}</div>
-                        <div className="text-xs text-gray-500">{user.email}</div>
+                        <div className="text-xs text-gray-500">
+                          {user.email}
+                        </div>
                       </div>
                       {isAdmin && (
                         <Link
@@ -154,7 +158,9 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                     {getWishlistCount()}
                   </span>
                 )}
-                <span className="hidden sm:block text-sm font-semibold">Wishlist</span>
+                <span className="hidden sm:block text-sm font-semibold">
+                  Wishlist
+                </span>
               </Link>
 
               {/* Cart */}
@@ -168,7 +174,9 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                     {getCartItemsCount()}
                   </span>
                 )}
-                <span className="hidden sm:block text-sm font-semibold">Cart</span>
+                <span className="hidden sm:block text-sm font-semibold">
+                  Cart
+                </span>
               </Link>
 
               {/* Mobile Menu Button */}
@@ -190,7 +198,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
-                className="flex-1 px-4 py-2 rounded-l-md border-0 focus:outline-none focus:ring-2 focus:ring-[#FF9900] text-sm"
+                className="flex-1 px-4 py-2 rounded-l-md border-0 focus:outline-none focus:ring-2 focus:ring-[#FF9900] text-sm bg-white text-gray-900 dark:bg-gray-800 dark:text-white"
               />
               <button
                 type="submit"

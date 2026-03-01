@@ -72,27 +72,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signup = async (email: string, password: string, name: string) => {
     try {
-      console.log("Starting signup for:", email);
-      const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-bb77abb6/auth/signup`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${publicAnonKey}`,
-          },
-          body: JSON.stringify({ email, password, name }),
-        },
-      );
+      console.log("AuthContext: Starting signup for:", email);
+      const url = `https://${projectId}.supabase.co/functions/v1/make-server-bb77abb6/auth/signup`;
+      console.log("Signup URL:", url);
 
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${publicAnonKey}`,
+        },
+        body: JSON.stringify({ email, password, name }),
+      });
+
+      console.log("Response status:", response.status);
       const data = await response.json();
-      console.log("Signup response:", data);
+      console.log("Signup response data:", data);
 
       if (!response.ok) {
+        console.error("Signup failed:", data.error);
         throw new Error(data.error || "Signup failed");
       }
 
-      // After signup, log the user in
+      console.log("Signup successful, logging in...");
       await login(email, password);
     } catch (error) {
       console.error("Signup error:", error);

@@ -14,31 +14,40 @@ export function SignupPage() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+  console.log('Form submitted');
+  console.log('Name:', name, 'Email:', email);
 
-    if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
-    }
+  if (password !== confirmPassword) {
+    console.log('Passwords do not match');
+    toast.error('Passwords do not match');
+    return;
+  }
 
-    if (password.length < 6) {
-      toast.error('Password must be at least 6 characters');
-      return;
-    }
+  if (password.length < 6) {
+    console.log('Password too short');
+    toast.error('Password must be at least 6 characters');
+    return;
+  }
 
-    setLoading(true);
+  console.log('Starting signup process...');
+  setLoading(true);
 
-    try {
-      await signup(email, password, name);
-      toast.success("Account created successfully!");
-      navigate("/");
-    } catch (error: any) {
-      console.error("Signup page error:", error);
-      toast.error(error.message || "Failed to create account");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    console.log('Calling signup function...');
+    await signup(email, password, name);
+    console.log('Signup successful!');
+    toast.success('Account created successfully!');
+    navigate('/');
+  } catch (error: any) {
+    console.error('Signup page error:', error);
+    toast.error(error.message || 'Failed to create account');
+  } finally {
+    console.log('Setting loading to false');
+    setLoading(false);
+  }
+};
+  
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">

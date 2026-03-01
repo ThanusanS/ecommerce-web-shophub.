@@ -92,7 +92,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
                 <div className="relative">
                   <button
                     onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="hidden sm:flex items-center gap-2 text-white hover:text-[#FF9900] transition-colors px-2"
+                    className="flex items-center gap-2 text-white hover:text-[#FF9900] transition-colors px-2"
                   >
                     <User className="h-5 w-5" />
                     <div className="hidden lg:block text-left">
@@ -137,7 +137,7 @@ export function Header({ darkMode, toggleDarkMode }: HeaderProps) {
               ) : (
                 <Link
                   to="/login"
-                  className="hidden sm:flex items-center gap-2 text-white hover:text-[#FF9900] transition-colors px-2"
+                  className="flex items-center gap-2 text-white hover:text-[#FF9900] transition-colors px-2"
                 >
                   <User className="h-5 w-5" />
                   <div className="hidden lg:block text-left">

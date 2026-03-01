@@ -30,10 +30,11 @@ export function SignupPage() {
 
     try {
       await signup(email, password, name);
-      toast.success('Account created successfully!');
-      navigate('/');
+      toast.success("Account created successfully!");
+      navigate("/");
     } catch (error: any) {
-      toast.error(error.message || 'Failed to create account');
+      console.error("Signup page error:", error);
+      toast.error(error.message || "Failed to create account");
     } finally {
       setLoading(false);
     }
